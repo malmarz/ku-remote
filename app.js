@@ -4,8 +4,9 @@
   var roleEls = Array.prototype.slice.call(document.querySelectorAll('[data-roles]'));
   var roleBtns = Array.prototype.slice.call(document.querySelectorAll('.role-btn'));
   var boxes = Array.prototype.slice.call(document.querySelectorAll('#checklist input[type="checkbox"]'));
-  var ROLES = ['all', 'student', 'faculty', 'staff'];
-  var role = 'all';
+  var ROLES = ['student', 'faculty', 'staff'];
+  var LABELS = { student: ['طالب', 'Student'], faculty: ['عضو هيئة تدريس', 'Faculty'], staff: ['موظف', 'Staff'] };
+  var role = 'student';
 
   // ---- Storage: every access wrapped, the page works without it -------------
   function store(key, value) {
@@ -46,12 +47,15 @@
 
   // ---- Role ---------------------------------------------------------------
   function inRole(el) {
-    if (role === 'all') return true;
     return (el.getAttribute('data-roles') || '').split(/\s+/).indexOf(role) !== -1;
   }
 
+  function hasRole(el, r) {
+    return (el.getAttribute('data-roles') || '').split(/\s+/).indexOf(r) !== -1;
+  }
+
   function setRole(next) {
-    role = ROLES.indexOf(next) !== -1 ? next : 'all';
+    role = ROLES.indexOf(next) !== -1 ? next : 'student';
     roleBtns.forEach(function (b) {
       b.setAttribute('aria-pressed', b.getAttribute('data-role') === role ? 'true' : 'false');
     });
@@ -60,7 +64,7 @@
       el.classList.toggle('role-off', !inRole(el));
     });
     store('ku-remote-role', role);
-    setParam('role', role === 'all' ? '' : role);
+    setParam('role', role);
     filter();
     progress();
   }
@@ -119,7 +123,10 @@
     if (topic && topic.hidden) {
       // A checklist or help link must never land on a filtered-out tile.
       document.getElementById('search').value = '';
-      if (!inRole(topic)) setRole('all');
+      if (!inRole(topic)) {
+        var first = ROLES.filter(function (r) { return hasRole(topic, r); })[0];
+        if (first) setRole(first);
+      }
       filter();
     }
     var node = target;
@@ -170,12 +177,37 @@
       if (match) shown++;
     });
     document.getElementById('no-match').hidden = shown !== 0;
+    var other = document.getElementById('other-role');
+    var box = document.getElementById('other-role-btns');
+    box.textContent = '';
+    if (shown === 0 && query) {
+      var found = {};
+      topics.forEach(function (topic) {
+        var text = '';
+        topic.querySelectorAll('.' + root.lang).forEach(function (el) { text += ' ' + el.textContent; });
+        text += ' ' + (topic.getAttribute('data-keys') || '');
+        if (normalise(text).indexOf(query) === -1) return;
+        ROLES.forEach(function (r) { if (r !== role && hasRole(topic, r)) found[r] = true; });
+      });
+      ROLES.forEach(function (r) {
+        if (!found[r]) return;
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'role-btn';
+        b.textContent = LABELS[r][root.lang === 'ar' ? 0 : 1];
+        b.addEventListener('click', function () { setRole(r); });
+        box.appendChild(b);
+      });
+      other.hidden = !box.firstChild;
+    } else {
+      other.hidden = true;
+    }
   }
   document.getElementById('search').addEventListener('input', filter);
 
   // ---- Start --------------------------------------------------------------
   var params = new URLSearchParams(location.search);
   setLang(params.get('lang') || store('ku-remote-lang') || 'ar');
-  setRole(params.get('role') || store('ku-remote-role') || 'all');
+  setRole(params.get('role') || store('ku-remote-role') || 'student');
   openFromHash();
 })();

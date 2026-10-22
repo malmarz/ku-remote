@@ -10,8 +10,9 @@ Modelled on the sibling `ku-mfa` self-help page and reuses its CSS and JS patter
 ## What is on the page
 
 1. Status strip (green normal / commented-out red "remote mode active" variant).
-2. Role picker (Student / Faculty / Staff / Show all) filters tiles, sub-blocks and checklist
-   items through `data-roles="student faculty staff"`. Remembered locally and shown as `?role=`.
+2. Role picker (Student / Faculty / Staff; default Student, always exactly one active) filters tiles, sub-blocks and checklist
+   items through `data-roles="student faculty staff"`. Remembered locally and shown as `?role=`; an invalid value falls back to Student.
+   Deep links and search to a tile hidden for the current role switch to the first role that has it.
 3. Readiness checklist; ticks are remembered in this browser only. Each item links to its tile.
 4. Search with Arabic normalisation and `data-keys` synonyms; no match points to "Get help".
 5. Task tiles (`<details class="topic">`, one open at a time, each with a stable `id`).

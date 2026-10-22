@@ -55,10 +55,9 @@
   <section class="sec" aria-labelledby="roles-h">
     <h2 id="roles-h"><span class="ar">أنا…</span><span class="en">I am a…</span></h2>
     <div class="roles" role="group">
-      <button class="role-btn" type="button" data-role="student" aria-pressed="false"><span class="ar">طالب</span><span class="en">Student</span></button>
+      <button class="role-btn" type="button" data-role="student" aria-pressed="true"><span class="ar">طالب</span><span class="en">Student</span></button>
       <button class="role-btn" type="button" data-role="faculty" aria-pressed="false"><span class="ar">عضو هيئة تدريس</span><span class="en">Faculty</span></button>
       <button class="role-btn" type="button" data-role="staff" aria-pressed="false"><span class="ar">موظف</span><span class="en">Staff</span></button>
-      <button class="role-btn" type="button" data-role="all" aria-pressed="true"><span class="ar">عرض الكل</span><span class="en">Show all</span></button>
     </div>
   </section>
 
@@ -118,6 +117,10 @@
     <p id="no-match" class="no-match" hidden>
       <span class="ar">لا توجد نتيجة. جرّب كلمة أخرى، أو انتقل إلى <a href="#help">«أحتاج مساعدة»</a>.</span>
       <span class="en">No match. Try another word, or go to <a href="#help">“Get help”</a>.</span>
+    </p>
+    <p id="other-role" class="no-match" hidden>
+      <span class="ar">متوفر لفئة أخرى: </span><span class="en">Available for another role: </span>
+      <span id="other-role-btns"></span>
     </p>
   </section>
 
