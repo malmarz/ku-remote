@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل العمل والتعلم عن بُعد — جامعة الكويت</title>
+<meta name="description" content="Kuwait University remote work and learning hub: get ready before you need it, and find help fast. Mockup.">
+<link rel="icon" href="assets/ku-logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <img src="assets/ku-logo-white.png" alt="Kuwait University — جامعة الكويت">
+    <h1>
+      <span class="ar">دليل العمل والتعلم عن بُعد<small>جامعة الكويت</small></span>
+      <span class="en">Remote Work &amp; Learning Hub<small>Kuwait University</small></span>
+    </h1>
+    <button id="lang" class="lang-btn" type="button">
+      <span class="ar">English</span><span class="en">العربية</span>
+    </button>
+  </div>
+</header>
+
+<!-- EDIT: operating status. Swap to the red variant below when remote mode is declared. -->
+<div class="status normal" role="status">
+  <div class="wrap">
+    <span class="dot" aria-hidden="true"></span>
+    <div>
+      <div class="ar">الدوام والدراسة حضورياً — لا يوجد وضع طوارئ حالياً
+        <span class="sub">استخدم هذه الصفحة الآن للاستعداد، قبل أن تحتاج إليها.</span></div>
+      <div class="en">Normal operations — no remote mode in effect
+        <span class="sub">Use this page now to get ready, before you need it.</span></div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="status remote" role="status">
+  <div class="wrap">
+    <span class="dot" aria-hidden="true"></span>
+    <div>
+      <div class="ar">العمل والدراسة عن بُعد مفعّلان منذ <DATE>
+        <span class="sub">راجع التعميم الرسمي، ثم اتبع الخطوات أدناه.</span></div>
+      <div class="en">Remote mode active since <DATE>
+        <span class="sub">Read the official circular, then follow the steps below.</span></div>
+    </div>
+  </div>
+</div>
+-->
+
+<main class="wrap">
+
+  <!-- ─────────────────────────────────────────────── ROLE PICKER -->
+  <section class="sec" aria-labelledby="roles-h">
+    <h2 id="roles-h"><span class="ar">أنا…</span><span class="en">I am a…</span></h2>
+    <div class="roles" role="group">
+      <button class="role-btn" type="button" data-role="student" aria-pressed="false"><span class="ar">طالب</span><span class="en">Student</span></button>
+      <button class="role-btn" type="button" data-role="faculty" aria-pressed="false"><span class="ar">عضو هيئة تدريس</span><span class="en">Faculty</span></button>
+      <button class="role-btn" type="button" data-role="staff" aria-pressed="false"><span class="ar">موظف</span><span class="en">Staff</span></button>
+      <button class="role-btn" type="button" data-role="all" aria-pressed="true"><span class="ar">عرض الكل</span><span class="en">Show all</span></button>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────── READINESS CHECKLIST -->
+  <section class="sec" aria-labelledby="ready-h">
+    <div class="ready" id="checklist">
+      <h2 id="ready-h"><span class="ar">هل أنت مستعد إذا تحولت الجامعة للعمل عن بُعد غداً؟</span><span class="en">Ready if KU goes remote tomorrow?</span></h2>
+      <div class="meter">
+        <span class="bar" aria-hidden="true"><i id="bar"></i></span>
+        <span class="count" id="count" aria-live="polite">0/0</span>
+      </div>
+      <ul class="checks">
+        <li data-roles="student faculty staff"><div class="check">
+          <input type="checkbox" id="c-signin">
+          <label for="c-signin"><span class="ar">أعرف بريدي الجامعي وكلمة المرور</span><span class="en">I know my university email and password</span></label>
+          <a href="#sign-in"><span class="ar">الطريقة</span><span class="en">How</span></a>
+        </div></li>
+        <li data-roles="student faculty staff"><div class="check">
+          <input type="checkbox" id="c-mfa">
+          <label for="c-mfa"><span class="ar">التحقق بخطوتين (MFA) يعمل على هاتفي</span><span class="en">MFA works on my phone</span></label>
+          <a href="#mfa"><span class="ar">الطريقة</span><span class="en">How</span></a>
+        </div></li>
+        <li data-roles="student faculty staff"><div class="check">
+          <input type="checkbox" id="c-teams">
+          <label for="c-teams"><span class="ar">ثبّتُّ Teams وأستطيع الدخول إليه</span><span class="en">Teams is installed and I can sign in</span></label>
+          <a href="#teams"><span class="ar">الطريقة</span><span class="en">How</span></a>
+        </div></li>
+        <li data-roles="student faculty"><div class="check">
+          <input type="checkbox" id="c-moodle">
+          <label for="c-moodle"><span class="ar">أستطيع فتح مقرراتي في مودل</span><span class="en">I can open my courses in Moodle</span></label>
+          <a href="#moodle"><span class="ar">الطريقة</span><span class="en">How</span></a>
+        </div></li>
+        <li data-roles="faculty staff"><div class="check">
+          <input type="checkbox" id="c-vpn">
+          <label for="c-vpn"><span class="ar">حصلت على موافقة VPN وجرّبته الآن<small>الموافقة تستغرق وقتاً، فلا تنتظر حالة الطوارئ.</small></span><span class="en">VPN approved and tested now<small>Approval takes time. Do not wait for an emergency.</small></span></label>
+          <a href="#vpn"><span class="ar">الطريقة</span><span class="en">How</span></a>
+        </div></li>
+        <li data-roles="faculty student"><div class="check">
+          <input type="checkbox" id="c-exams">
+          <label for="c-exams"><span class="ar">أعرف كيف أُجري أو أؤدي اختباراً عن بُعد</span><span class="en">I know how to run or sit an online exam</span></label>
+          <a href="#exams"><span class="ar">الطريقة</span><span class="en">How</span></a>
+        </div></li>
+      </ul>
+      <p id="all-ready" class="ok" hidden>
+        <span class="ar">أنت مستعد. احتفظ برابط هذه الصفحة.</span>
+        <span class="en">You are ready. Keep a link to this page.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────── SEARCH -->
+  <section class="ask">
+    <h2><span class="ar">ماذا تحتاج؟</span><span class="en">What do you need?</span></h2>
+    <input id="search" class="search" type="search" autocomplete="off"
+           data-ar="ابحث: كلمة السر، VPN، مودل، اختبار…" data-en="Search: password, VPN, Moodle, exam…"
+           aria-label="Search">
+    <p id="no-match" class="no-match" hidden>
+      <span class="ar">لا توجد نتيجة. جرّب كلمة أخرى، أو انتقل إلى <a href="#help">«أحتاج مساعدة»</a>.</span>
+      <span class="en">No match. Try another word, or go to <a href="#help">“Get help”</a>.</span>
+    </p>
+  </section>
+
+  <div class="topics">
+
+    <!-- 1 ─────────────────────────────────────────────── SIGN IN -->
+    <details class="topic" id="sign-in" data-roles="student faculty staff"
+             data-keys="sign in login password email account reset forgot outlook كلمة السر كلمة المرور الرقم السري بريد ايميل دخول حساب نسيت">
+      <summary>
+        <span class="ico" aria-hidden="true">🔑</span>
+        <span class="t">
+          <b><span class="ar">لا أستطيع الدخول</span><span class="en">I can’t sign in</span></b>
+          <i><span class="ar">البريد الجامعي، كلمة المرور، أول دخول</span><span class="en">University email, password, first sign-in</span></i>
+        </span>
+        <span class="chev" aria-hidden="true">›</span>
+      </summary>
+      <div class="body">
+        <ul class="ar">
+          <li><b>الطلبة:</b> <span class="ui">S&lt;الرقم الجامعي&gt;@ku.edu.kw</span> للدفعات بعد 2022. تجد رقمك الجامعي في نظام التسجيل.</li>
+          <li><b>الموظفون وأعضاء هيئة التدريس:</b> يُرسل البريد الجامعي وكلمة مرور مؤقتة إلى بريدك الشخصي.</li>
+        </ul>
+        <ul class="en">
+          <li><b>Students:</b> <span class="ui">S&lt;university ID&gt;@ku.edu.kw</span> for cohorts after 2022. Your ID is in the registration system.</li>
+          <li><b>Staff and faculty:</b> your email and a temporary password are sent to your personal email.</li>
+        </ul>
+        <ol class="steps ar">
+          <li>كلمة المرور هي نفسها كلمة مرور نظام التسجيل.</li>
+          <li>افتح بريدك مرة واحدة في <a href="https://outlook.office.com" target="_blank" rel="noopener">Outlook على الويب</a> لتفعيله قبل Teams ومودل.</li>
+          <li>نسيت كلمة المرور؟ أعد تعيينها من <a href="https://mspwdreset.ku.edu.kw" target="_blank" rel="noopener">mspwdreset.ku.edu.kw</a>.</li>
+        </ol>
+        <ol class="steps en">
+          <li>Your password is the same as the registration system.</li>
+          <li>Open your mailbox once in <a href="https://outlook.office.com" target="_blank" rel="noopener">Outlook on the web</a> to activate it before Teams and Moodle.</li>
+          <li>Forgot it? Reset it at <a href="https://mspwdreset.ku.edu.kw" target="_blank" rel="noopener">mspwdreset.ku.edu.kw</a>.</li>
+        </ol>
+        <div class="warn">
+          <span class="ar">استخدم بريدك الجامعي دائماً، وليس بريدك الشخصي.</span>
+          <span class="en">Always use your university email, never a personal one.</span>
+        </div>
+        <button class="share" type="button"><span class="ar">نسخ رابط هذه الإجابة</span><span class="en">Copy link to this answer</span></button>
+      </div>
+    </details>
+
+    <!-- 2 ─────────────────────────────────────────────── MFA -->
+    <details class="topic" id="mfa" data-roles="student faculty staff"
+             data-keys="mfa authenticator 2fa two-step verification code phone التحقق بخطوتين المصادقة رمز هاتف تطبيق">
+      <summary>
+        <span class="ico" aria-hidden="true">📱</span>
+        <span class="t">
+          <b><span class="ar">التحقق بخطوتين</span><span class="en">Set up or fix MFA</span></b>
+          <i><span class="ar">تطبيق Microsoft Authenticator</span><span class="en">Microsoft Authenticator app</span></i>
+        </span>
+        <span class="chev" aria-hidden="true">›</span>
+      </summary>
+      <div class="body">
+        <p class="ar">يعمل التحقق بخطوتين عبر تطبيق <span class="ui">Microsoft Authenticator</span>. يمكن إعداده بالهاتف وحده، دون حاسوب.</p>
+        <p class="en">MFA uses the <span class="ui">Microsoft Authenticator</span> app. You can set it up on your phone alone, no computer needed.</p>
+        <!-- EDIT: switch to mfa.ku.edu.kw if migrated -->
+        <a class="btn" href="https://bit.ly/ku-mfa" target="_blank" rel="noopener"><span class="ar">دليل التحقق بخطوتين</span><span class="en">Open the MFA guide</span></a>
+        <div class="warn">
+          <span class="ar">عند الدخول تُدخل في التطبيق <b>الرقم الظاهر على الشاشة</b>، وهو غير الرمز المكوّن من ست خانات. لا تشارك أي رمز مع أحد.</span>
+          <span class="en">At sign-in you type <b>the number shown on screen</b> into the app. That is not the 6-digit code. Never share any code.</span>
+        </div>
+        <button class="share" type="button"><span class="ar">نسخ رابط هذه الإجابة</span><span class="en">Copy link to this answer</span></button>
+      </div>
+    </details>
+
+    <!-- 3 ─────────────────────────────────────────────── TEAMS -->
+    <details class="topic" id="teams" data-roles="student faculty staff"
+             data-keys="teams meeting class lecture online video محاضرة اجتماع فريق تيمز اونلاين">
+      <summary>
+        <span class="ico" aria-hidden="true">🎥</span>
+        <span class="t">
+          <b><span class="ar">حضور المحاضرات والاجتماعات</span><span class="en">Join classes &amp; meetings</span></b>
+          <i>Microsoft Teams</i>
+        </span>
+        <span class="chev" aria-hidden="true">›</span>
+      </summary>
+      <div class="body">
+        <ol class="steps ar">
+          <li>افتح <a href="https://teams.microsoft.com" target="_blank" rel="noopener">teams.microsoft.com</a> في المتصفح، أو ثبّت التطبيق.</li>
+          <li>سجّل الدخول ببريدك الجامعي.</li>
+          <li>لا يظهر فريق المقرر؟ تأكد أن المقرر ظاهر في مودل؛ فقد لا يكون الأستاذ فعّله بعد.</li>
+        </ol>
+        <ol class="steps en">
+          <li>Open <a href="https://teams.microsoft.com" target="_blank" rel="noopener">teams.microsoft.com</a> in a browser, or install the app.</li>
+          <li>Sign in with your university email.</li>
+          <li>Class team missing? Check the course is visible in Moodle. The instructor may not have activated it yet.</li>
+        </ol>
+        <div class="sub-block" data-roles="faculty">
+          <h3><span class="ar">لأعضاء هيئة التدريس</span><span class="en">For faculty</span></h3>
+          <p class="ar">أنشئ فريقاً مستقلاً لكل مقرر أو لجنة. للشُّعب الكبيرة شارك <span class="ui">Join code</span> بدلاً من الإضافة اليدوية.</p>
+          <p class="en">Create a dedicated team per course or committee. For large classes, share a <span class="ui">Join code</span>.</p>
+        </div>
+        <p><span class="ar">الدعم:</span><span class="en">Support:</span> <a href="mailto:support.teams@ku.edu.kw">support.teams@ku.edu.kw</a></p>
+        <button class="share" type="button"><span class="ar">نسخ رابط هذه الإجابة</span><span class="en">Copy link to this answer</span></button>
+      </div>
+    </details>
+
+    <!-- 4 ─────────────────────────────────────────────── MOODLE -->
+    <details class="topic" id="moodle" data-roles="student faculty"
+             data-keys="moodle course lms dashboard مودل مقرر مقررات منصة">
+      <summary>
+        <span class="ico" aria-hidden="true">📚</span>
+        <span class="t">
+          <b><span class="ar">مودل</span><span class="en">Moodle courses</span></b>
+          <i><span class="ar">مقرراتك ومحتواها</span><span class="en">Your courses and their content</span></i>
+        </span>
+        <span class="chev" aria-hidden="true">›</span>
+      </summary>
+      <div class="body">
+        <ol class="steps ar">
+          <li>افتح <a href="https://moodle.ku.edu.kw" target="_blank" rel="noopener">moodle.ku.edu.kw</a>.</li>
+          <li>تجد مقرراتك في <span class="ui">Dashboard</span>.</li>
+          <li>مقرر غير ظاهر؟ تواصل مع أستاذ المقرر.</li>
+        </ol>
+        <ol class="steps en">
+          <li>Open <a href="https://moodle.ku.edu.kw" target="_blank" rel="noopener">moodle.ku.edu.kw</a>.</li>
+          <li>Your courses are on the <span class="ui">Dashboard</span>.</li>
+          <li>A course is missing? Contact the instructor.</li>
+        </ol>
+        <div class="sub-block" data-roles="student">
+          <h3><span class="ar">للطلبة</span><span class="en">For students</span></h3>
+          <!-- EDIT: final student guide PDF URL -->
+          <p><a href="https://www.ku.edu.kw/sites/default/files/2026-03/" target="_blank" rel="noopener"><span class="ar">دليل الطالب لمودل (PDF)</span><span class="en">Student Moodle guide (PDF)</span></a> <span class="tbc">[TO CONFIRM: final guide URL]</span></p>
+        </div>
+        <div class="sub-block" data-roles="faculty">
+          <h3><span class="ar">لأعضاء هيئة التدريس</span><span class="en">For faculty</span></h3>
+          <p class="ar">الأدلة متاحة لدى <a href="https://elc.ku.edu.kw" target="_blank" rel="noopener">مركز التعليم الإلكتروني</a>.</p>
+          <p class="en">Guides are at the <a href="https://elc.ku.edu.kw" target="_blank" rel="noopener">E-Learning Center</a>.</p>
+        </div>
+        <p><span class="ar">الدعم:</span><span class="en">Support:</span> <a href="mailto:support.moodle@ku.edu.kw">support.moodle@ku.edu.kw</a></p>
+        <button class="share" type="button"><span class="ar">نسخ رابط هذه الإجابة</span><span class="en">Copy link to this answer</span></button>
+      </div>
+    </details>
+
+    <!-- 5 ─────────────────────────────────────────────── EXAMS -->
+    <details class="topic" id="exams" data-roles="faculty student"
+             data-keys="exam quiz test safe exam browser assessment اختبار امتحان كويز تقييم">
+      <summary>
+        <span class="ico" aria-hidden="true">📝</span>
+        <span class="t">
+          <b><span class="ar">الاختبارات عن بُعد</span><span class="en">Online exams</span></b>
+          <i><span class="ar">مودل و Safe Exam Browser</span><span class="en">Moodle and Safe Exam Browser</span></i>
+        </span>
+        <span class="chev" aria-hidden="true">›</span>
+      </summary>
+      <div class="body">
+        <div data-roles="faculty">
+          <h3><span class="ar">لأعضاء هيئة التدريس</span><span class="en">For faculty</span></h3>
+          <ol class="steps ar">
+            <li>أنشئ الاختبار في مودل: <span class="ui">Activities</span> ← <span class="ui">Quiz</span>.</li>
+            <li>يتوفر <span class="ui">Safe Exam Browser</span> للاختبارات المقيّدة.</li>
+            <li>نسّق الاختبارات الكبيرة مسبقاً مع <a href="https://elc.ku.edu.kw" target="_blank" rel="noopener">مركز التعليم الإلكتروني</a>.</li>
+          </ol>
+          <ol class="steps en">
+            <li>Build the exam in Moodle: <span class="ui">Activities</span> → <span class="ui">Quiz</span>.</li>
+            <li><span class="ui">Safe Exam Browser</span> is available for locked-down exams.</li>
+            <li>Coordinate large exams in advance with the <a href="https://elc.ku.edu.kw" target="_blank" rel="noopener">E-Learning Center</a>.</li>
+          </ol>
+        </div>
+        <div class="sub-block" data-roles="student">
+          <h3><span class="ar">للطلبة</span><span class="en">For students</span></h3>
+          <!-- EDIT: student exam instructions from the E-Learning Center -->
+          <p><span class="tbc">[TO CONFIRM: student exam instructions from ELC]</span></p>
+        </div>
+        <button class="share" type="button"><span class="ar">نسخ رابط هذه الإجابة</span><span class="en">Copy link to this answer</span></button>
+      </div>
+    </details>
+
+    <!-- 6 ─────────────────────────────────────────────── VPN -->
+    <details class="topic" id="vpn" data-roles="faculty staff"
+             data-keys="vpn forticlient work from home remote access العمل من المنزل الشبكة الخاصة فورتي اتصال عن بعد">
+      <summary>
+        <span class="ico" aria-hidden="true">🏠</span>
+        <span class="t">
+          <b><span class="ar">العمل من المنزل (VPN)</span><span class="en">Work from home (VPN)</span></b>
+          <i><span class="ar">للموظفين وأعضاء هيئة التدريس</span><span class="en">For staff and faculty</span></i>
+        </span>
+        <span class="chev" aria-hidden="true">›</span>
+      </summary>
+      <div class="body">
+        <div class="warn">
+          <span class="ar"><b>قدّم الطلب الآن.</b> الموافقة تستغرق وقتاً، فلا تنتظر حالة الطوارئ.</span>
+          <span class="en"><b>Request it now.</b> Approval takes time. Do not wait for an emergency.</span>
+        </div>
+        <ol class="steps ar">
+          <li>اطلبه عبر <a href="https://supportme.ku.edu.kw" target="_blank" rel="noopener">SupportMe</a>: <span class="ui">الخدمة الذاتية التقنية</span> ← <span class="ui">خدمات الأمن الإلكترونية</span> ← <span class="ui">طلب VPN</span>.</li>
+          <li>ثبّت برنامج <span class="ui">FortiClient VPN</span>. <span class="tbc">[TO CONFIRM: download link / official client]</span></li>
+          <li>عنوان الخادم: <span class="tbc">[TO CONFIRM: server address]</span></li>
+          <li>اسم المستخدم: بريدك الجامعي كاملاً، مثل <span class="ui">name@ku.edu.kw</span>، وليس الرقم الجامعي أو الوظيفي. كلمة المرور: كلمة مرورك الجامعية.</li>
+          <li>وافق على طلب الدخول في <span class="ui">Microsoft Authenticator</span>؛ التحقق بخطوتين إلزامي على VPN منذ 3 سبتمبر 2026.</li>
+        </ol>
+        <ol class="steps en">
+          <li>Request it via <a href="https://supportme.ku.edu.kw" target="_blank" rel="noopener">SupportMe</a>: <span class="ui">الخدمة الذاتية التقنية</span> → <span class="ui">خدمات الأمن الإلكترونية</span> → <span class="ui">طلب VPN</span> (Technical self-service → Electronic security services → VPN request).</li>
+          <li>Install <span class="ui">FortiClient VPN</span>. <span class="tbc">[TO CONFIRM: download link / official client]</span></li>
+          <li>Server address: <span class="tbc">[TO CONFIRM: server address]</span></li>
+          <li>Username: your full university email, e.g. <span class="ui">name@ku.edu.kw</span>, not your KU or employee ID. Password: your university password.</li>
+          <li>Approve the sign-in in <span class="ui">Microsoft Authenticator</span>. MFA is required on VPN since 3 Sep 2026.</li>
+        </ol>
+        <div class="warn stop">
+          <span class="ar">على أجهزتك الشخصية فقط. لا تستخدمه أبداً على أجهزة الفنادق أو المقاهي أو الأجهزة المشتركة.</span>
+          <span class="en">Your own personal devices only. Never on hotel, café or shared computers.</span>
+        </div>
+        <p><span class="ar">من يحق له الطلب:</span><span class="en">Who is eligible:</span> <span class="tbc">[TO CONFIRM: who is eligible and approval route]</span></p>
+        <button class="share" type="button"><span class="ar">نسخ رابط هذه الإجابة</span><span class="en">Copy link to this answer</span></button>
+      </div>
+    </details>
+
+    <!-- 7 ─────────────────────────────────────────────── ADMIN SELF-SERVICE -->
+    <details class="topic" id="grades-hr" data-roles="faculty staff"
+             data-keys="grades leave hr self-service fingerprint attendance trasolat درجات رصد اجازة اجازات بصمة الخدمة الذاتية تراسلات">
+      <summary>
+        <span class="ico" aria-hidden="true">🗂️</span>
+        <span class="t">
+          <b><span class="ar">الخدمات الإدارية</span><span class="en">Grades, leave &amp; self-service</span></b>
+          <i><span class="ar">الإجازات، البصمة، رصد الدرجات، تراسلات</span><span class="en">Leave, fingerprint, grade entry, Trasolat</span></i>
+        </span>
+        <span class="chev" aria-hidden="true">›</span>
+      </summary>
+      <div class="body">
+        <ul class="ar">
+          <li><a href="https://oam.ku.edu.kw/oam/pages/login.jsp" target="_blank" rel="noopener">الخدمة الذاتية</a>: طلب إجازة من <span class="ui">Self-service</span> ← <span class="ui">Leaves</span> ← <span class="ui">Leave request</span>، وتقرير البصمة.</li>
+          <li data-roles="faculty">رصد الدرجات: <a href="https://www.ku.edu.kw/ar/faculty-portal" target="_blank" rel="noopener">بوابة أعضاء هيئة التدريس</a> ← رصد الدرجات.</li>
+          <li data-roles="staff">المراسلات الرسمية: <a href="https://trasolat.ku.edu.kw" target="_blank" rel="noopener">تراسلات</a>.</li>
+        </ul>
+        <ul class="en">
+          <li><a href="https://oam.ku.edu.kw/oam/pages/login.jsp" target="_blank" rel="noopener">Self-service</a>: leave via <span class="ui">Self-service</span> → <span class="ui">Leaves</span> → <span class="ui">Leave request</span>, plus your fingerprint report.</li>
+          <li data-roles="faculty">Grade entry: <a href="https://www.ku.edu.kw/ar/faculty-portal" target="_blank" rel="noopener">Faculty portal</a> → grade entry.</li>
+          <li data-roles="staff">Official correspondence: <a href="https://trasolat.ku.edu.kw" target="_blank" rel="noopener">Trasolat</a>.</li>
+        </ul>
+        <button class="share" type="button"><span class="ar">نسخ رابط هذه الإجابة</span><span class="en">Copy link to this answer</span></button>
+      </div>
+    </details>
+
+    <!-- 8 ─────────────────────────────────────────────── NEW HERE -->
+    <details class="topic" id="new-here" data-roles="student faculty staff"
+             data-keys="new first day orientation journey onboarding جديد مستجد رحلة بداية">
+      <summary>
+        <span class="ico" aria-hidden="true">👋</span>
+        <span class="t">
+          <b><span class="ar">جديد في الجامعة؟</span><span class="en">New to KU?</span></b>
+          <i><span class="ar">أدلة البداية</span><span class="en">Getting-started guides</span></i>
+        </span>
+        <span class="chev" aria-hidden="true">›</span>
+      </summary>
+      <div class="body">
+        <div class="row">
+          <span data-roles="student">
+            <a class="btn light ar" href="https://www.ku.edu.kw/ar/new-student-journey" target="_blank" rel="noopener">رحلة الطالب الجديد</a>
+            <a class="btn light en" href="https://www.ku.edu.kw/new-student-journey" target="_blank" rel="noopener">New student journey</a>
+          </span>
+          <span data-roles="staff">
+            <a class="btn light ar" href="https://www.ku.edu.kw/ar/new-employee-journey" target="_blank" rel="noopener">رحلة الموظف الجديد</a>
+            <a class="btn light en" href="https://www.ku.edu.kw/new-employee-journey" target="_blank" rel="noopener">New employee journey</a>
+          </span>
+          <span data-roles="faculty">
+            <a class="btn light ar" href="https://www.ku.edu.kw/ar/new-facultys-journey" target="_blank" rel="noopener">رحلة عضو هيئة التدريس الجديد</a>
+            <a class="btn light en" href="https://www.ku.edu.kw/new-faculty-journey" target="_blank" rel="noopener">New faculty journey</a>
+          </span>
+        </div>
+        <button class="share" type="button"><span class="ar">نسخ رابط هذه الإجابة</span><span class="en">Copy link to this answer</span></button>
+      </div>
+    </details>
+
+    <!-- 9 ─────────────────────────────────────────────── HELP -->
+    <details class="topic" id="help" data-roles="student faculty staff"
+             data-keys="help support contact whatsapp phone call مساعدة دعم تواصل واتساب هاتف اتصال">
+      <summary>
+        <span class="ico" aria-hidden="true">💬</span>
+        <span class="t">
+          <b><span class="ar">أحتاج مساعدة</span><span class="en">Get help</span></b>
+          <i><span class="ar">بمن تتواصل، حسب المشكلة</span><span class="en">Who to contact, by problem</span></i>
+        </span>
+        <span class="chev" aria-hidden="true">›</span>
+      </summary>
+      <div class="body">
+        <!-- EDIT: support contacts. Verify every row before publishing. -->
+        <div class="table-wrap">
+          <table class="support">
+            <thead>
+              <tr>
+                <th scope="col"><span class="ar">المشكلة</span><span class="en">Problem</span></th>
+                <th scope="col"><span class="ar">الطلبة</span><span class="en">Students</span></th>
+                <th scope="col"><span class="ar">الموظفون وأعضاء هيئة التدريس</span><span class="en">Staff &amp; faculty</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><span class="ar">كلمة المرور</span><span class="en">Password</span></th>
+                <td colspan="2"><a href="https://mspwdreset.ku.edu.kw" target="_blank" rel="noopener">mspwdreset.ku.edu.kw</a></td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="ar">التحقق بخطوتين</span><span class="en">MFA</span></th>
+                <td>
+                  <span class="ar">مكتب التوجيه والإرشاد في كليتك، أو واتساب للطوارئ فقط خلال الدوام:</span>
+                  <span class="en">Your college’s Guidance &amp; Counselling Office, or WhatsApp for emergencies only, working hours:</span><br>
+                  <a class="num" href="https://wa.me/96524984051" target="_blank" rel="noopener">+965 24984051</a> ·
+                  <a class="num" href="https://wa.me/96524982884" target="_blank" rel="noopener">+965 24982884</a> ·
+                  <a class="num" href="https://wa.me/96524982845" target="_blank" rel="noopener">+965 24982845</a><br>
+                  <span class="tbc">[TO CONFIRM: single student channel — site currently also says Itsecurity@]</span>
+                </td>
+                <td><a href="https://supportme.ku.edu.kw" target="_blank" rel="noopener">SupportMe</a>: <span class="ui">خدمات الأمن الإلكترونية</span> <span class="ar">←</span><span class="en">→</span> <span class="ui">إضافة MFA للمستخدم</span></td>
+              </tr>
+              <tr>
+                <th scope="row">VPN</th>
+                <td>—</td>
+                <td><a href="mailto:itsecurity@ku.edu.kw">itsecurity@ku.edu.kw</a><br><span class="tbc">[TO CONFIRM: VPN contact numbers]</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Teams</th>
+                <td colspan="2"><a href="mailto:support.teams@ku.edu.kw">support.teams@ku.edu.kw</a> ·
+                  <span class="ar">واتساب للطوارئ:</span><span class="en">WhatsApp, emergencies:</span>
+                  <a class="num" href="https://wa.me/96524983452" target="_blank" rel="noopener">+965 24983452</a></td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="ar">مودل</span><span class="en">Moodle</span></th>
+                <td colspan="2"><a href="mailto:support.moodle@ku.edu.kw">support.moodle@ku.edu.kw</a> ·
+                  <span class="ar">واتساب للطوارئ:</span><span class="en">WhatsApp, emergencies:</span>
+                  <a class="num" href="https://wa.me/96524983452" target="_blank" rel="noopener">+965 24983452</a></td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="ar">أي مشكلة أخرى</span><span class="en">Anything else</span></th>
+                <td colspan="2"><span class="ar">الدعم الفني:</span><span class="en">IT Support:</span>
+                  <a class="num" href="tel:+96524984444">+965 24984444</a> ·
+                  <a href="https://supportme.ku.edu.kw" target="_blank" rel="noopener">supportme.ku.edu.kw</a></td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="ar">ساعات العمل</span><span class="en">Hours</span></th>
+                <td colspan="2"><span class="tbc">[TO CONFIRM: support hours]</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="warn">
+          <span class="ar">لا ترسل كلمة مرورك أو أي رمز إلى أحد، ولو قال إنه من الدعم الفني.</span>
+          <span class="en">Never send your password or any code to anyone, even if they say they are from IT support.</span>
+        </div>
+        <button class="share" type="button"><span class="ar">نسخ رابط هذه الإجابة</span><span class="en">Copy link to this answer</span></button>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- ─────────────────────────────────────────────── QUICK LINKS -->
+  <nav class="quick" aria-label="Quick links">
+    <a href="https://portal.ku.edu.kw" target="_blank" rel="noopener"><span class="ar">نظام التسجيل</span><span class="en">Registration system</span></a>
+    <a href="https://moodle.ku.edu.kw" target="_blank" rel="noopener"><span class="ar">مودل</span><span class="en">Moodle</span></a>
+    <a href="https://outlook.office.com" target="_blank" rel="noopener"><span class="ar">البريد</span><span class="en">Email</span></a>
+    <a href="https://do.ku.edu.kw/ar/academic-calendar-0" target="_blank" rel="noopener"><span class="ar">التقويم الأكاديمي</span><span class="en">Academic calendar</span></a>
+    <a href="https://eresources.ku.edu.kw/ar/home" target="_blank" rel="noopener"><span class="ar">المصادر الإلكترونية</span><span class="en">E-resources</span></a>
+    <a href="https://etraining.percipio.com" target="_blank" rel="noopener">Percipio</a>
+  </nav>
+</main>
+
+<footer class="wrap">
+  <hr>
+  <p><b><span class="ar">لن يطلب منك موظفو الجامعة كلمة المرور أو رمز التحقق أبداً.</span><span class="en">KU staff will never ask for your password or code.</span></b></p>
+  <!-- EDIT: review date and page owner -->
+  <p><span class="ar">آخر مراجعة: 2026-10-22 · المسؤول:</span><span class="en">Last reviewed: 2026-10-22 · Owner:</span> <span class="tbc">[TO CONFIRM: page owner]</span></p>
+  <p><span class="mock"><span class="ar">نموذج تجريبي — ليست صفحة رسمية لجامعة الكويت</span><span class="en">Mockup — not an official KU page</span></span></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
