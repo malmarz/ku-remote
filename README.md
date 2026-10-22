@@ -22,9 +22,9 @@ Modelled on the sibling `ku-mfa` self-help page and reuses its CSS and JS patter
 - All text is in `index.html`; each string appears twice (`class="ar"` / `class="en"`).
 - Tile ids are direct links (`index.html#vpn`); do not rename after sharing.
 - `?lang=en|ar` forces a language; `?role=student|faculty|staff` forces a role.
-- `<!-- EDIT: ... -->` markers remain for: operating status, MFA link (`mfa.ku.edu.kw` if migrated),
-  support contacts, and the direct Ivanti client download link (VPN tile; until IT Security
-  provides it, users download from the `ku-vpn.ku.edu.kw` portal).
+- `<!-- EDIT: ... -->` markers remain for: operating status, support contacts, and review date / owner.
+- MFA links to the official guide at `mfa.ku.edu.kw`. The Ivanti client is downloaded from the
+  `ku-vpn.ku.edu.kw` portal after sign-in (it downloads automatically if not installed).
 - The `[TO CONFIRM: ...]` chip style (`.tbc`) stays in `style.css` for future gaps; none render now.
   Never fill a gap with a guess.
 
