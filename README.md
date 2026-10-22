@@ -22,6 +22,20 @@ Modelled on the sibling `ku-mfa` self-help page and reuses its CSS and JS patter
 - All text is in `index.html`; each string appears twice (`class="ar"` / `class="en"`).
 - Tile ids are direct links (`index.html#vpn`); do not rename after sharing.
 - `?lang=en|ar` forces a language; `?role=student|faculty|staff` forces a role.
-- `<!-- EDIT: ... -->` marks status, MFA link, guide URL, support contacts, review date.
-- `[TO CONFIRM: ...]` chips (gold, dashed) are open gaps. They render on purpose so reviewers
-  see them; resolve each before any real publication. Never fill one with a guess.
+- `<!-- EDIT: ... -->` markers remain for: operating status, MFA link (`mfa.ku.edu.kw` if migrated),
+  support contacts, and the direct Ivanti client download link (VPN tile; until IT Security
+  provides it, users download from the `ku-vpn.ku.edu.kw` portal).
+- The `[TO CONFIRM: ...]` chip style (`.tbc`) stays in `style.css` for future gaps; none render now.
+  Never fill a gap with a guess.
+
+## Confirmed facts (2026-10-22)
+
+- VPN: faculty and staff only; request on SupportMe (`Security Services` > `VPN Request`); client is
+  the Ivanti Secure Access Client (previously Pulse Secure); server `ku-vpn.ku.edu.kw`; sign in with
+  full university email; MFA required since 3 Sep 2026; personal devices only.
+- Support: IT Security (itsecurity@ku.edu.kw, three WhatsApp numbers, emergencies only) covers VPN and MFA;
+  E-Learning Center (elc@ku.edu.kw, +965 24987693, WhatsApp 24983452) covers Moodle and exams,
+  Sunday-Thursday 7:00-15:00.
+- Moodle guides and playlists from elc.ku.edu.kw / YouTube; exams: Proctorio (students, Chrome),
+  SEB / Respondus / Proctorio (faculty).
+- Content owner: Portal and Supporting Applications Department, Center of Information Systems.
